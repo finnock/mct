@@ -1,0 +1,92 @@
+// Fonts
+@import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
+
+// Bootswatch Variables for your chosen theme
+@import "~bootswatch/dist/darkly/variables";
+
+// Variables for vanilla Bootstrap
+// @import "variables";
+
+
+
+// Bootstrap
+@import "~bootstrap/scss/bootstrap";
+
+// Bootswatch theme main CSS files
+@import "~bootswatch/dist/darkly/bootswatch";
+
+// Font-Awesome Font
+@import "~font-awesome/scss/font-awesome";
+
+// Keyrune Font
+@import "~keyrune/sass/keyrune";
+
+// Mana Font
+@import "~mana-font/css/mana.min.css";
+
+/* Larger Fontsize Preset for Keyrune/Mana */
+
+@font-face {
+  font-family: MagicTheGathering;
+  src: url('/fonts/vendor/planewalker/planewalker.otf');
+}
+
+.mtg-font {
+  font-family: MagicTheGathering;
+}
+
+.ss-10x {
+  font-size: 10em !important;
+}
+
+/* SetSymbols */
+
+.table-striped > tbody > tr:nth-of-type(even) .ss-pill {
+  /*
+  background-color: #5D5D5D;
+  */
+  color: #dddddd;
+}
+
+.table-striped > tbody > tr:nth-of-type(odd) .ss-pill {
+  /*
+  background-color: #7D7D7D;
+  */
+  color: #dddddd;
+}
+
+/* Card Element from Spoiler view-type */
+
+.mct-card {
+  margin: 5px 3px;
+  position: relative;
+}
+
+.mct-card .panel-body {
+  padding: 0;
+}
+
+.mct-card .mct-image {
+  width: 220px;
+}
+
+.mct-card .panel-footer, .mct-card .panel-heading {
+  padding: 0;
+}
+
+img.fade-out{
+  opacity: 0.4;
+}
+
+.form-inline{
+   display: inline;
+ }
+
+
+.ss-dark.ss-common{
+  color: #dddddd;
+}
+
+.rotate-90{
+  transform: rotate(90deg);
+}

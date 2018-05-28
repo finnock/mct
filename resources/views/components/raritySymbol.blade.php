@@ -1,0 +1,1 @@
+<i class="ss {{ $options }} {{ rarityToKeyruneClass($setCode, $rarity) }}"></i>
