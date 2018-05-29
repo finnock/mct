@@ -33,7 +33,6 @@
                 type: 'setLoading',
                 loading: true
             })
-            console.log('starting async call')
             window.axios.get(this.src)
                 .then(function (response) {
                     store.commit({
