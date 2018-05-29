@@ -31,4 +31,9 @@ class User extends Authenticatable
     {
         return $this->belongsToMany('App\Card')->withTimestamps()->withPivot('count');
     }
+
+    public function resetCollection()
+    {
+        $this->cards()->detach();
+    }
 }

@@ -6,6 +6,7 @@
             <h3>Add Card</h3>
             <form action="{{ url('/collection') }}" method="post" class="form-inline">
                 {{ csrf_field() }}
+                <input type="hidden" name="type" value="add">
                 <div class="form-group">
                     <input type="text" class="form-control mx-sm-3" name="setCode" id="code" placeholder="Set Code" value="{{ ($cards->first()->setCode ?? '') }}" style="margin: 5px 16px;">
                     <small class="text-muted">

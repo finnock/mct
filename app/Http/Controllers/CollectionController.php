@@ -37,7 +37,7 @@ class CollectionController extends Controller
         // MTGArena decided to make the expansion code for Dominaria "DAR" instead of "DOM"
         $export = str_replace('(DAR)', '(DOM)', $export);
 
-        $decodingExpression = '/(\d+) ([\w\s]+) \(([A-Z]{3})\) (\d+)/m';
+        $decodingExpression = '/(\d+) (.+) \(([A-Z]{3})\) (\d+)/m';
         /* Decoding the export syntax given by MTGArena
          * Group 1: Card Count
          *       2: Card Name
@@ -75,8 +75,11 @@ class CollectionController extends Controller
 
     public function store(Request $request)
     {
-        if(isset($request->all()['cardBatch']))
+        if($request->all()['type'] == 'batch')
         {
+            if($request->all()['submit'] == 'reset')
+                Auth::user()->resetCollection();
+
             $cardBatch = $this->mtgaExportDecode($request->all()['cardBatch']);
             foreach ($cardBatch as $cardMatch)
             {
@@ -97,7 +100,7 @@ class CollectionController extends Controller
             return back()->withInput();
         }
 
-        if(isset($request->all()['cardNumber']))
+        if($request->all()['type'] == 'add')
         {
             // Split the given Cardnumber/Count
             $cardNumberSplit = explode(',', $request->all()['cardNumber']);
