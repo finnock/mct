@@ -21,7 +21,8 @@ Route::get('/test', function () {
 });
 
 Route::prefix('api')->middleware(['api', 'auth'])->group(function () {
-    Route::get('collection', 'APIController@indexCollection');
+    Route::get('collection', 'APIController@indexCollection')->name('api.collection.index');
+    Route::get('sets/{code}', 'APIController@showSet')->name('api.set.show');
 });
 
 Route::group(['middleware' => ['web', 'auth']], function () {

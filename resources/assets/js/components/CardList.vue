@@ -24,8 +24,31 @@
 
 <script>
     import { mapGetters, mapState } from 'vuex'
+    import store from '../store'
+
 
     export default {
+        mounted: function () {
+            store.commit({
+                type: 'setLoading',
+                loading: true
+            })
+            console.log('starting async call')
+            window.axios.get(this.src)
+                .then(function (response) {
+                    store.commit({
+                        type: 'setLoadingSuccess',
+                        cards: response.data
+                    })
+                })
+                .catch(function (error) {
+                    store.commit({
+                        type: 'setLoadingFailed',
+                        error: error
+                    })
+                    console.log(error);
+                });
+        },
         computed: {
             ... mapGetters({
                cards: 'filteredCards'
@@ -34,6 +57,9 @@
                 'displayOptions',
                 'loading'
             ])
+        },
+        props: {
+            src: String
         }
     }
 </script>

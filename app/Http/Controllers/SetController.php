@@ -33,8 +33,7 @@ class SetController extends Controller
     public function show($code)
     {
         $set = Set::with('cards.users')->find($code);
-        $cards = Card::cardListToVueModel($set->cards);
 
-        return view('sets.show')->with(compact('set', 'cards'));
+        return view('sets.show')->with(compact('set'));
     }
 }
