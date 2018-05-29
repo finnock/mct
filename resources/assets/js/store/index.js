@@ -8,7 +8,8 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
     state: {
-        loading: true,
+        loading: false,
+        failed: false,
         cards: [],
         filter: '',
         sortingFunction: 'number',
@@ -40,6 +41,17 @@ export default new Vuex.Store({
         },
         setCard (state, payLoad) {
             state.card = payLoad.card
+        },
+        setLoading (state, payLoad) {
+            state.loading = payLoad.loading
+        },
+        setLoadingSuccess (state, payLoad) {
+            state.loading = false
+            state.cards = payLoad.cards
+        },
+        setLoadingFailed (state, payLoad) {
+            state.loading = false
+            state.failed = true
         }
     },
     getters: {

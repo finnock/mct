@@ -11,8 +11,23 @@
 @section('scripts')
     <script>
         window.store.commit({
-            type: 'initialize',
-            cards: {!! $cards !!}
+            type: 'setLoading',
+            loading: true
         })
+        console.log('starting async call')
+        window.axios.get('/api/collection')
+            .then(function (response) {
+                window.store.commit({
+                    type: 'setLoadingSuccess',
+                    cards: response.data
+                })
+            })
+            .catch(function (error) {
+                window.store.commit({
+                    type: 'setLoadingFailed',
+                    error: error
+                })
+                console.log(error);
+            });
     </script>
 @endsection
