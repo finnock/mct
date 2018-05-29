@@ -50581,6 +50581,7 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vuex
 /* harmony default export */ __webpack_exports__["a"] = (new __WEBPACK_IMPORTED_MODULE_1_vuex__["a" /* default */].Store({
     state: {
         loading: false,
+        failed: false,
         cards: [],
         filter: '',
         sortingFunction: 'number',
@@ -50614,6 +50615,17 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vuex
         },
         setCard: function setCard(state, payLoad) {
             state.card = payLoad.card;
+        },
+        setLoading: function setLoading(state, payLoad) {
+            state.loading = payLoad.loading;
+        },
+        setLoadingSuccess: function setLoadingSuccess(state, payLoad) {
+            state.loading = false;
+            state.cards = payLoad.cards;
+        },
+        setLoadingFailed: function setLoadingFailed(state, payLoad) {
+            state.loading = false;
+            state.failed = true;
         }
     },
     getters: {
@@ -52662,6 +52674,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
+//
 
 
 
@@ -52682,7 +52696,11 @@ var render = function() {
   return _c("div", { staticClass: "row" }, [
     _c("div", { staticClass: "col-lg-12 text-center" }, [
       _vm.loading
-        ? _c("i", { staticClass: "ss ss-zen ss-5x fa-spin" })
+        ? _c("div", { staticClass: "mt-5" }, [
+            _c("h3", { staticClass: "mtg-font" }, [_vm._v("Loading...")]),
+            _vm._v(" "),
+            _c("i", { staticClass: "ss ss-zen ss-5x fa-spin mt-2" })
+          ])
         : _vm._e(),
       _vm._v(" "),
       !_vm.loading

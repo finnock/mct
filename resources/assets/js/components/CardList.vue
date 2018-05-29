@@ -1,8 +1,10 @@
 <template>
     <div class="row">
         <div class="col-lg-12 text-center">
-
-            <i v-if="loading" class="ss ss-zen ss-5x fa-spin"></i>
+            <div v-if="loading" class="mt-5">
+                <h3 class="mtg-font">Loading...</h3>
+                <i class="ss ss-zen ss-5x fa-spin mt-2"></i>
+            </div>
             <div v-if="!loading" class="d-flex flex-wrap justify-content-between">
                 <div class="mct-card" v-for="card in cards">
                     <a target="_blank" :href="card.directLink">
