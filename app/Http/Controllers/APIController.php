@@ -22,4 +22,19 @@ class APIController extends Controller
 
         return $vueCards;
     }
+
+    public function formatArena() {
+        $sets = Set::formatArena();
+
+        $cards = collect();
+        foreach ($sets as $set)
+        {
+            $cards = $cards->merge(
+                $set->cards()->with('users')->get());
+        }
+
+        $vueCards = Card::cardListToVueModel($cards);
+
+        return $vueCards;
+    }
 }

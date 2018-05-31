@@ -5,5 +5,5 @@
 @endsection
 
 @section('content')
-    <card-list src="{{ route('api.collection.index') }}"/>
+    <card-list src="{{ $apiSrc }}"/>
 @endsection

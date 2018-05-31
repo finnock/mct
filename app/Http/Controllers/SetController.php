@@ -36,4 +36,11 @@ class SetController extends Controller
 
         return view('sets.show')->with(compact('set'));
     }
+
+    public function formatArena()
+    {
+        $apiSrc = route('api.format.arena');
+
+        return view('user.collection')->with(compact('apiSrc'));
+    }
 }

@@ -23,6 +23,7 @@ Route::get('/test', function () {
 Route::prefix('api')->middleware(['api', 'auth'])->group(function () {
     Route::get('collection', 'APIController@indexCollection')->name('api.collection.index');
     Route::get('sets/{code}', 'APIController@showSet')->name('api.set.show');
+    Route::get('formats/arena', 'APIController@formatArena')->name('api.format.arena');
 });
 
 Route::group(['middleware' => ['web', 'auth']], function () {
@@ -47,6 +48,7 @@ Route::group(['middleware' => ['web', 'auth']], function () {
 
     Route::get('/sets/{code}', 'SetController@show');
     Route::get('/sets', 'SetController@index');
+    Route::get('/formats/arena', 'SetController@formatArena')->name('format.arena');
 
     Route::get('/', 'CollectionController@dashboard')->name('dashboard');
 

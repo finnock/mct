@@ -12,10 +12,9 @@ class CollectionController extends Controller
 
     public function index()
     {
-        $cards = Card::cardListToVueModel(Auth::user()->cards()->orderBy('created_at', 'desc')->get());
-        $count = true;
+        $apiSrc = route('api.collection.index');
 
-        return view('user.collection')->with(compact('cards', 'count'));
+        return view('user.collection')->with(compact('apiSrc'));
     }
 
 

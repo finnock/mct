@@ -40,6 +40,14 @@ class Set extends Model
             ->get();
     }
 
+    public static function formatArena()
+    {
+        return Set::with('cards.users')
+            ->whereIn('code', ['DOM', 'RIX', 'XLN', 'AKH', 'HOU'])
+            ->orderBy('releaseDate', 'desc')
+            ->get();
+    }
+
 
     public static function expansions()
     {
